@@ -1,8 +1,11 @@
-{
-  "query": "a",
-  "suggestions": [
-    { "value": "张三", "data": { "id": "123", "gender": "male"}},
-    { "value": "李四", "data": { "id": "124", "gender": "female"}},
-    { "value": "王五", "data": { "id": "125", "gender": "male"}}
-  ]
-}
+[
+  {"value": { "partName": "车架", "partCode": "123233", "partPrice": 111 }},
+  {"value": { "partName": "车锁", "partCode": "33333", "partPrice": 12 }},
+  {"value": { "partName": "后视镜", "partCode": "1111", "partPrice": 132  }},
+  {"value": { "partName": "后视镜二型", "partCode": "333333", "partPrice": 132  }},
+  {"value": { "partName": "垫子", "partCode": "44444", "partPrice": 132  }},
+  {"value": { "partName": "螺丝4号", "partCode": "3333311", "partPrice": 122  }},
+  {"value": { "partName": "人造人8号", "partCode": "23123", "partPrice": 132  }},
+  {"value": { "partName": "Denise", "partCode": "333312", "partPrice": 132  }},
+  {"value": { "partName": "Aaron", "partCode": "sdsdsds", "partPrice": 1112  }}
+]

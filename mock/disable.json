@@ -51,18 +51,5 @@
       "partNum":0
 
     }
-  ],
-
-    "query": "tipsName",
-    "suggestions": [
-      { "value": "车架", "data": { "partCode": "123", "price": "100"}},
-      { "value": "轱辘", "data": { "partCode": "124", "price": "100"}},
-      { "value": "刹车", "data": { "partCode": "125", "price": "100"}}
-    ],
-    "query":"tipsCode",
-    "suggestions": [
-      { "value": "111", "data": { "partName": "车架", "price": "100"}},
-      { "value": "112", "data": { "partName": "124", "price": "100"}},
-      { "value": "3311", "data": { "partName": "125", "price": "100"}}
-    ]
+  ]
 }

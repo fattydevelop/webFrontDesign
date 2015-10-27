@@ -142,10 +142,18 @@ li{
 }
 .addParts{
     height:30px;
-    div{
-        padding-top: 10px;
-        padding-left: 20px;
-        float:right;
+    position: relative;
+    clear: both;
+    text-align:right;
+    #autoBox{
+            float: right;
+            width: 52%;
+            padding-top: 20px;
+        }
+    button{
+        position: absolute;
+        top: 80px;
+        right: 0px;
     }
 }
 .bottom-miniNum{
@@ -283,10 +291,11 @@ li{
        </fieldset>
     </div>
      <div class="addParts">
-           <div><button class="btn btn-primary">添加</button></div>
-           <div>配件名：<input type="text" id="autoName"/></div>
-           <div>配件编码：<input type="text" id="autoCode"/></div>
+           <div id="autoBox"></div>
+           <button class="btn btn-primary" v-on="click:addToList">添加</button>
     </div>
+
+
 
 </div>
 </template>
@@ -303,8 +312,11 @@ li{
         },
         ready:function() {
             var store = require("../../store/disable");
-            $("#autoName").tagsinput(store.configName);
-            $("#autoCode").tagsinput(store.configCode);
+            var self = this;
+            store.getAutoCompleteData(1).done(function(data){
+                var config = store.setAutoComplete(data);
+                self.autoWidget = new AutoComplete('autoBox', config);
+            });
         },
         data:function(){
             return {
@@ -312,7 +324,8 @@ li{
                 partAnalysis:[],
                 partsListCommon:[],
                 totalNum:0,
-                totalPrice:0
+                totalPrice:0,
+                autoWidget:{}
             }
         },
         computed:{
@@ -350,40 +363,50 @@ li{
            addNormal:function(){
            },
            selectFromCommon:function(index){
-                var self = this;
-                var flag = true;
-                this.partsList.forEach(function(e){
-                    if(e.partCode===self.partsListCommon[index].partCode){
-                        flag=false;
-                        ++e.partNum;
-                        return;
-                    }
-                });
-                if(flag===true){
-                  this.partsList.push(this.partsListCommon[index]);
-                }
+                this.pushInPartsList(this.partsListCommon,index);
            },
            selectFromAnalysis:function(index) {
-                var self = this;
-                var flag = true;
-                this.partsList.forEach(function(e){
-                    if(e.partCode===self.partAnalysis[index].partCode){
-                        flag=false;
-                        ++e.partNum;
-                        return;
-                    }
-                });
-                if(flag===true){
-                  this.partsList.push(this.partAnalysis[index]);
-                }
+                this.pushInPartsList(this.partAnalysis,index);
            },
            selectAll:function(){
-
                 if($("#selectAll")[0].checked){
                     $(".partAllSelect").attr("checked",true);
                 }else{
                     $(".partAllSelect").attr("checked",false);
                 }
+           },
+           addToList:function(){
+                if(this.autoWidget.getValue().length){
+                   var obj = this.autoWidget.getValue()[0][0].value;
+                   this.pushInPartsList(obj);
+                }
+           },
+           pushInPartsList:function(data,index){
+               var flag = true;
+               this.partsList.forEach(function(e){
+                   if(index){
+                       if(e.partCode===data[index].partCode){
+                           flag=false;
+                           ++e.partNum;
+                           return;
+                       }
+                   }else{
+                        if(e.partCode===data.partCode){
+                            flag=false;
+                            ++e.partNum;
+                            return;
+                         }
+                   }
+               });
+               if(flag===true){
+                 if(index)
+                    this.partsList.push(data[index]);
+                 else{
+                    data.partNum=0;
+                    this.partsList.push(data);
+                 }
+               }
+
            }
         }
     }

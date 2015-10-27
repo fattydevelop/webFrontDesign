@@ -41,16 +41,34 @@ module.exports={
         }
         return deferred.promise();
     },
-    configName:{
-        autocomplete:{
-            serviceUrl:"../../mock/disable.json",
-            paramName:"tipsName"
-        }
+    getAutoCompleteData:function(query){
+        var deferred = $.Deferred();
+        $.getJSON("../../mock/tips.json").done(function(data){
+            deferred.resolve(data);
+        })
+        return deferred.promise();
     },
-    configCode:{
-        autocomplete:{
-            serviceUrl:"../../mock/disable.json",
-            paramName:"tipsCode"
+    setAutoComplete:function(data){
+        var partsList = data;
+        var encode = AutoComplete.htmlEncode;
+        var partsNameData = function(option){
+            var html ='';
+            html+='<span style="color: #000088">'+option.value.partName+'</span>';
+            html+='--'+'<span style="color: #333333">'+encode(option.value.partCode)+'</span>';
+            html+='--￥'+'<span style="color:red">'+encode(option.value.partPrice)+'</span>';
+            return html;
         }
-    }
+        var configAutocomplete = {
+            placeholderHTML:"选择配件",
+            maxTokenGroups:1,
+            showErrors: 'console',
+            lists:{
+                partsList:{
+                    optionHTML:partsNameData,
+                    options:partsList
+                }
+            }
+        };
+        return configAutocomplete;
+    },
 }
