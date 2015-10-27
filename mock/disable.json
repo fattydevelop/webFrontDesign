@@ -1,0 +1,68 @@
+{
+  "partsList":[
+    {
+      "partName":"asdsds",
+      "partCode":1111111,
+      "partPrice":11.11,
+      "partFactory": "王牌",
+      "partNum":0
+
+    },
+    {
+      "partName":"asdsds",
+      "partCode":222222,
+      "partPrice":181.31,
+      "partFactory": "王牌",
+      "partNum":0
+
+    }
+  ],
+  "partsListCommon":[
+    {
+      "partName": "车轴",
+      "partCode": "11asd3sdfdc3",
+      "partPrice": 199.9,
+      "partFactory": "王牌",
+      "partNum":0
+
+    },
+    {
+      "partName": "轱辘",
+      "partCode": "12asd3sdfdc3",
+      "partPrice": 49.5,
+      "partFactory": "王牌",
+      "partNum":0
+    }
+  ],
+  "partAnalysis":[
+    {
+      "partName": "车轴",
+      "partCode": "13asd3sdfdc3",
+      "partPrice": 199.9,
+      "partFactory": "王牌",
+      "partNum":0
+
+    },
+    {
+      "partName": "车轴",
+      "partCode": "14asd3sdfdc3",
+      "partPrice": 199.9,
+      "partFactory": "王牌",
+      "partNum":0
+
+    }
+  ],
+
+    "query": "tipsName",
+    "suggestions": [
+      { "value": "车架", "data": { "partCode": "123", "price": "100"}},
+      { "value": "轱辘", "data": { "partCode": "124", "price": "100"}},
+      { "value": "刹车", "data": { "partCode": "125", "price": "100"}}
+    ],
+    "query":"tipsCode",
+    "suggestions": [
+      { "value": "111", "data": { "partName": "车架", "price": "100"}},
+      { "value": "112", "data": { "partName": "124", "price": "100"}},
+      { "value": "3311", "data": { "partName": "125", "price": "100"}}
+    ]
+}
