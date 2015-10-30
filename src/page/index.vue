@@ -13,7 +13,7 @@
    <vheader logo-src={{logoSrc}} header-title={{headerTitle}} user-name={{userName}} user-identity={{userIdentity}}></vheader>
    <vlogin class="right-login"></vlogin>
    <div class="left-vad"><vad></vad></div>
-   <vdisable></vdisable>
+   <vperson></vperson>
 </template>
 
 <script>
@@ -29,9 +29,10 @@
             },
         components:{
             //vheader:require('../components/v-header.vue'),
-            vdisable:require('../components/functional/v-disableParts.vue')
+            //vdisable:require('../components/functional/v-disableParts.vue')
             //vlogin:require('../components/v-login.vue'),
             //vad:require('../components/v-ad.vue')
+            vperson:require('../components/v-personInfo.vue')
         }
     }
 </script>
